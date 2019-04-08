@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+		<title>Проверка на экстремизм</title>
+
+		<style type="text/css">
+			body {
+				font-family: Arial, sans-serif;
+				position:relative;
+				background:#40464b;
+				height:100%;
+				padding:40px 30%;
+				margin:0;
+			}
+
+			.container {
+				
+			}
+
+			h1 {
+				color: #f2f2f2;
+			}
+
+			p {
+				color: #f2f2f2;
+			}
+
+			b {
+				color: #d38f23;
+			}
+
+			textarea {
+				color: #222;
+				padding: 10px;
+				border-radius: 4px;
+				box-shadow: inset 0 2px 4px #999;
+			}
+			
+			textarea::-webkit-input-placeholder {
+				color: #cecece;
+			}
+			textarea:-moz-placeholder { /* Firefox 18- */
+				color: #cecece;  
+			}
+			textarea::-moz-placeholder {  /* Firefox 19+ */
+				color: #cecece;  
+			}
+			textarea:-ms-input-placeholder {
+				color: #cecece;  
+			}
+
+
+
+
+
+
+			input[type="radio"] {
+				display:none;
+			}
+
+			input[type="radio"] + label {
+				color:#f2f2f2;
+				font-family:Arial, sans-serif;
+			}
+
+			input[type="radio"] + label span {
+				display:inline-block;
+				width:19px;
+				height:19px;
+				margin:-2px 10px 0 0;
+				vertical-align:middle;
+				background:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -38px top no-repeat;
+				cursor:pointer;
+			}
+
+			input[type="radio"]:checked + label span {
+				background:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -57px top no-repeat;
+			}
+
+			.button-check {
+				position: relative;
+				background-color: #f39c12;
+				border: none;
+				padding: 20px;
+				width: 200px;
+				text-align: center;
+				-webkit-transition-duration: 0.4s; /* Safari */
+				transition-duration: 0.4s;
+				text-decoration: none;
+				overflow: hidden;
+				margin: 10px;
+			}
+
+			.button-check:hover{
+			background:#fff;
+			box-shadow:0px 2px 10px 5px #97B1BF;
+			color:#000;
+			}
+
+			.button-check:after {
+				content: "";
+				background: #f1c40f;
+				display: block;
+				position: absolute;
+				padding-top: 300%;
+				padding-left: 350%;
+				margin-left: -20px !important;
+				margin-top: -120%;
+				opacity: 0;
+				transition: all 0.8s
+			}
+
+			.button-check:active:after {
+				padding: 0;
+				margin: 0;
+				opacity: 1;
+				transition: 0s
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Проверка на экстремизм</h1>
+			<p id="ScoreP">Проверка на экстремизм</p>
+			<textarea cols=100 id="textArea" readonly placeholder="Здесь отобразиться ваш текст"></textarea>
+
+		
+			<b id="ha">Вчера вечером</b><br>
+			<input type="radio" id="a1" name="a" />
+			<label for="a1" id="la1"><span></span>уважаемый Иван Иванов</label> <br>
+
+			<input type="radio" id="a2" name="a" />
+			<label for="a2" id="la2"><span></span>наш губернатор</label><br>
+
+			<input type="radio" id="a3" name="a" />
+			<label for="a3" id="la3"><span></span>Иван Иванов</label><br>
+
+			<input type="radio" id="a4" name="a" />
+			<label for="a4" id="la4"><span></span>никем не уважаемый, известно кто</label><br>
+
+			<input type="radio" id="a5" name="a" />
+			<label for="a5" id="la5"><span></span>Иванов Иван, тот самый петух ебаный</label><br>
+			
+
+			<b id="hb">Находясь за рулем</b><br>
+			<input type="radio" id="b1" name="b" />
+			<label for="b1" id="lb1"><span></span>своего автомобиля</label> <br>
+
+			<input type="radio" id="b2" name="b" />
+			<label for="b2" id="lb2"><span></span>своего автомобиля, в состоянии алкогольного опьянения</label><br>
+
+			<input type="radio" id="b3" name="b" />
+			<label for="b3" id="lb3"><span></span>своего BMW нажравшись в говно</label><br>
+
+
+
+			<b id="hc">Проезжая перекресток</b><br>
+			<input type="radio" id="c1" name="c" />
+			<label for="c1" id="lc1"><span></span>попал в ДТП</label> <br>
+
+			<input type="radio" id="c2" name="c" />
+			<label for="c2" id="lc2"><span></span>сбил пешехода</label><br>
+
+			<input type="radio" id="c3" name="c" />
+			<label for="c3" id="lc3"><span></span>на полной скорости сбил пешехода</label><br>
+
+			<button class="button-check" id="checkButton">Проверить</button>	
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+		<script type="text/javascript">
+			var checkButton = document.getElementById("checkButton");
+			var textArea = document.getElementById("textArea");
+			var ScoreP = document.getElementById("ScoreP");
+
+			var Score = 0;
+			var firstScore = [-2, -1, 0, 1, -100];
+			var secondScore = [-2, 0, -100];
+			var thirdScore = [-2, 1, 2];
+
+			checkButton.onclick = function (event) {	
+				Score = 0;
+
+				var str = document.getElementById("ha").textContent + " ";
+				var rad=document.getElementsByName('a');
+				for (var i=0;i<rad.length; i++) {
+					if (rad[i].checked) {
+						var lable = document.getElementById("la"+(i+1))
+						str += lable.textContent + ", ";
+						Score += firstScore[i];
+						break;
+					}
+				}
+
+				str += document.getElementById("hb").textContent.toLowerCase() + " ";
+				rad=document.getElementsByName('b');
+				for (var i=0;i<rad.length; i++) {
+					if (rad[i].checked) {
+						var lable = document.getElementById("lb"+(i+1))
+						str += lable.textContent + " ";
+						Score += secondScore[i];
+						break;
+					}
+				}
+
+				str += document.getElementById("hc").textContent.toLowerCase() + " ";
+				rad=document.getElementsByName('c');
+				for (var i=0;i<rad.length; i++) {
+					if (rad[i].checked) {
+						var lable = document.getElementById("lc"+(i+1))
+						str += lable.textContent + ".";
+						Score += thirdScore[i];
+						break;
+					}
+				}
+
+				textArea.textContent = str;
+				ScoreP.textContent = "Вы заработали " + Score + "/3 очков";
+			}
+		</script>
+	</body>
+</html>
